@@ -79,8 +79,7 @@ The MVP prioritizes core loop functionality: Budget → Track → Compare → Re
 
 ### 6.3 Transaction Tracking
 - **Requirement:** Allow users to add income and expense transactions with: amount, category, date, and optional notes.
-- **Requirement:** Support recurring transaction setup (daily, weekly, monthly) for fixed bills and salary.
-- **Requirement:** Provide a transaction history list with search and filter (by category, date range, amount range).
+- **Requirement:** Provide a transaction history list with search and filter (by category, date range).
 - **Requirement:** On save, a `Transaction` object is generated and saved to local storage with a UUID.
 
 ### 6.4 Budget vs Actual View

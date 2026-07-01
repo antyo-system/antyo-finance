@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - 2026-07-01
+
+### Added
+- Developed minimalist, simple local-first budgeting core.
+- Created Side-by-Side "Plan vs Reality" comparison view in Budget tab.
+- Integrated **Financial Identity Mirror Widget** on Dashboard to reflect user spending profile based on budget limit ratio.
+- Configured 100% data-safe local file storage adapter using `expo-file-system` for Zustand persistence.
+- Configured Tailwind CSS / NativeWind v5 support and Babel/PostCSS plugins.
+- Built responsive, clean and premium UI/UX theme with system-aware dark mode support.
+- Configured settings page with currency formatting, factory reset capability, and release notes popups.
+
 ## [0.1.0] - 2026-06-28
 
 ### Added

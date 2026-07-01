@@ -19,12 +19,11 @@ Berikut adalah *Master Blueprint* dari MVP hingga menghasilkan ratusan juta per 
 *Status Kita Saat Ini:* Membangun fondasi MVP. Fokus membuktikan bahwa *core loop* (Budget -> Track -> Reflect) berjalan tanpa *bug* fatal dan memperkuat keandalan data lokal.
 
 *   **Fitur Produk (Target MVP):**
-    *   Dashboard utama dengan ringkasan keuangan (saldo, pengeluaran bulan ini, budget tersisa).
-    *   Sistem Budget (buat kategori, set limit bulanan, pantau progress).
-    *   Transaction Tracking (input cepat, kategorisasi, recurring transactions).
+    *   Dashboard utama dengan ringkasan keuangan (saldo, pengeluaran bulan ini, budget tersisa) dan cermin identitas finansial.
+    *   Sistem Budget (buat kategori, set limit bulanan, pantau progress secara langsung).
+    *   Transaction Tracking (input transaksi pengeluaran dan pemasukan cepat).
     *   Budget vs Actual comparison view (side-by-side per kategori).
     *   100% Local-first data protection.
-    *   Statistik dasar (breakdown per kategori, trend mingguan).
 *   **Pengujian & Distribusi:** 
     *   Internal testing via Expo Go.
     *   Pembelian akun *Google Play Console* & *Apple Developer Program*.

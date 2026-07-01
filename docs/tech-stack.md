@@ -26,7 +26,7 @@ This stack is optimized for **AI tooling support**, **documentation quality**, a
 ## 5. Styling: NativeWind (Tailwind CSS for React Native)
 * **Why chosen:** NativeWind brings Tailwind CSS to React Native, allowing rapid, responsive, and consistent UI design. AI models are highly proficient with Tailwind utility classes, accelerating development.
 * **Alternative considered:** React Native StyleSheet or Tamagui.
-* **Tradeoffs:** Requires initial setup (Babel and Tailwind config), but eliminates boilerplate styling code, resulting in faster prototyping.
+* **Tradeoffs:** Requires initial setup (PostCSS and Metro configuration), but eliminates boilerplate styling code, resulting in faster prototyping.
 
 ## 6. Date & Time Manipulation: date-fns
 * **Why chosen:** Modular, modern, and comprehensive date utility library. Essential for date-based financial reports, monthly budget cycles, and transaction date handling.

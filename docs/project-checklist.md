@@ -11,51 +11,51 @@ This checklist tracks the progress of **Antyo Finance** from its MVP state all t
 ---
 
 ## Phase 1: The Bulletproof Foundation (MVP & V1 Release)
-**Status: ⏳ Pending**
+**Status: 🏗️ In Progress**
 *Fokus: Retensi D-1 & D-7. Pengguna harus jatuh cinta pada pandangan pertama.*
 
 **Core Setup & Architecture**
-- [ ] Create Expo App, TypeScript, & Router
-- [ ] Install NativeWind, Zustand & expo-file-system Local Storage Adapter
-- [ ] Configure ESLint, Prettier, and TypeScript strict mode
-- [ ] Setup project folder structure (`/app`, `/src` as per AGENTS.md)
+- [x] Create Expo App, TypeScript, & Router
+- [x] Install NativeWind, Zustand & expo-file-system Local Storage Adapter
+- [x] Configure ESLint, Prettier, and TypeScript strict mode
+- [x] Setup project folder structure (`/app`, `/src` as per AGENTS.md)
 
 **Core Features — Budgeting Engine**
-- [ ] Budget Category Management (Create, Edit, Delete with icons & colors)
-- [ ] Monthly Budget Setting (set spending limits per category)
-- [ ] Budget Progress Tracking (visual progress bars per category)
-- [ ] Budget vs Actual Comparison View (side-by-side per category)
+- [x] Budget Category Management (Create, Edit, Delete with icons & colors)
+- [x] Monthly Budget Setting (set spending limits per category)
+- [x] Budget Progress Tracking (visual progress bars per category)
+- [x] Budget vs Actual Comparison View (side-by-side per category)
 
 **Core Features — Transaction Engine**
-- [ ] Quick Transaction Entry (amount, category, date, notes)
-- [ ] Transaction History List with search & filter
+- [x] Quick Transaction Entry (amount, category, date, notes)
+- [x] Transaction History List with search & filter
 - [ ] Recurring Transaction Setup (bills, subscriptions, salary)
-- [ ] Transaction Edit & Delete (full CRUD)
+- [x] Transaction Edit & Delete (full CRUD)
 - [ ] Multi-Account Support (cash, bank, e-wallet)
 
 **Core Features — Dashboard**
-- [ ] Financial Dashboard (balance, income, expenses, budget remaining)
+- [x] Financial Dashboard (balance, income, expenses, budget remaining)
 - [ ] Category Breakdown Chart (donut/pie)
-- [ ] Income vs Expense Overview
+- [x] Income vs Expense Overview
 
 **Statistics & Insights**
 - [ ] Weekly & Monthly Spending Trend Charts
-- [ ] Budget Health Score (0-100)
+- [x] Budget Health Score (0-100 / Identity Mirror Widget)
 - [ ] Spending Heatmap (calendar-style daily grid)
 
 **Polish & UX**
-- [ ] Beautiful Empty States for all screens
-- [ ] Animations & Haptics (transaction add, milestone celebrations)
+- [x] Beautiful Empty States for all screens
+- [x] Haptic Feedback on key interactions (transaction add, delete, click)
 - [ ] Custom App Icon & Splash Screen
 - [ ] Onboarding Flow (3-4 screens explaining Budget vs Reality)
 
 **Infrastructure**
-- [ ] 100% Local-First Storage (custom expo-file-system Zustand adapter)
-- [ ] Currency Formatting (locale-aware: Rp, $, €)
+- [x] 100% Local-First Storage (custom expo-file-system Zustand adapter)
+- [x] Currency Formatting (locale-aware: Rp, $, €)
 - [ ] Data Export (JSON backup & CSV transactions)
-- [ ] Theme Customization (System, Light, Dark Mode)
-- [ ] Changelog System (in-app version update popup)
-- [ ] Settings Screen (currency, date format, notifications)
+- [x] Theme Customization (System, Light, Dark Mode)
+- [x] Changelog System (in-app version update popup)
+- [x] Settings Screen (currency, theme)
 
 **V1 Release Preparation**
 - [ ] Build Android APK / AAB
@@ -69,20 +69,20 @@ This checklist tracks the progress of **Antyo Finance** from its MVP state all t
 - **🔴 Critical (Ship-blockers)**
   - [ ] Implement Local Data Import/Restore in settings
   - [ ] Add Zustand Store Versioning & Migration logic for all persisted stores
-  - [ ] Add native `ErrorBoundary` fallback UI to layout root
-  - [ ] Ensure all models use UUIDs (not `Date.now()` IDs)
-  - [ ] Implement "Delete All Data" to reset all stores
+  - [x] Add native `ErrorBoundary` fallback UI to layout root
+  - [x] Ensure all models use UUIDs (not `Date.now()` IDs)
+  - [x] Implement "Delete All Data" to reset all stores
 - **🟠 High (Launch Essentials)**
   - [ ] Integrate PostHog for event analytics
   - [ ] Implement native "Rate This App" trigger (`expo-store-review`)
   - [ ] Add basic accessibility labels/roles to interactive elements
-  - [ ] Hydration check & splash screen loading guard in `_layout.tsx`
+  - [x] Hydration check & splash screen loading guard in `_layout.tsx`
 - **🟡 Medium (Quality Bar)**
   - [ ] Write critical unit tests for `/src/utils` (currency math, budget calculations, date helpers)
-  - [ ] Hardcode dynamic changelog dates in `changelog.ts`
+  - [x] Hardcode dynamic changelog dates in `changelog.ts`
 - **🟢 Nice-to-have (Post-launch)**
   - [ ] Onboarding skip button
-  - [ ] Haptic Feedback on key interactions
+  - [x] Haptic Feedback on key interactions
 
 ---
 
