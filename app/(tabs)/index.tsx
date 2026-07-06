@@ -43,31 +43,7 @@ export default function DashboardScreen() {
   const totalSpent = budgets.reduce((sum, b) => sum + b.spent, 0);
   const remainingBudget = totalLimit - totalSpent;
 
-  // Identity Mirror Calculation
-  let identityTitle = 'New Journey';
-  let identityDesc = 'Log your spending to see who you are becoming.';
-  let identityColor = '#6b7280'; // Gray
-  let identityIcon = 'compass-outline';
 
-  if (totalLimit > 0 && totalSpent > 0) {
-    const ratio = totalSpent / totalLimit;
-    if (ratio <= 0.70) {
-      identityTitle = 'Conscious Builder';
-      identityDesc = 'You are living well below your means and putting your future freedom ahead of short-term impulses. A solid foundation is growing.';
-      identityColor = '#10b981'; // Emerald
-      identityIcon = 'shield-checkmark-outline';
-    } else if (ratio <= 1.00) {
-      identityTitle = 'Balanced Planner';
-      identityDesc = 'You are keeping promises to yourself by respecting your planned limits. You stay perfectly aligned with your targets.';
-      identityColor = '#0ea5e9'; // Sky
-      identityIcon = 'analytics-outline';
-    } else {
-      identityTitle = 'Impulsive Explorer';
-      identityDesc = 'You have spent more than you planned. You are prioritizing short-term desires over long-term peace of mind. Pause and reflect.';
-      identityColor = '#f43f5e'; // Rose
-      identityIcon = 'warning-outline';
-    }
-  }
 
   // Format currency helper
   const formatCurrency = (val: number) => {
@@ -136,27 +112,6 @@ export default function DashboardScreen() {
           </View>
         </View>
 
-        {/* Identity Mirror Card */}
-        <View style={styles.sectionHeader}>
-          <Text style={[styles.sectionTitle, isDark ? styles.textWhite : styles.textDark]}>
-            Financial Identity Mirror
-          </Text>
-        </View>
-
-        <View style={[styles.mirrorCard, isDark ? styles.cardDark : styles.cardLight]}>
-          <View style={styles.mirrorHeader}>
-            <View style={[styles.mirrorIconContainer, { backgroundColor: `${identityColor}15` }]}>
-              <Ionicons name={identityIcon as any} size={24} color={identityColor} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.mirrorSubtitle}>YOUR PROFILE</Text>
-              <Text style={[styles.mirrorTitle, { color: identityColor }]}>{identityTitle}</Text>
-            </View>
-          </View>
-          <Text style={[styles.mirrorDesc, isDark ? styles.textGrayLight : styles.textGrayDark]}>
-            "{identityDesc}"
-          </Text>
-        </View>
 
         {/* Budget Health Overview */}
         <View style={styles.sectionHeader}>
@@ -378,48 +333,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: -0.2,
   },
-  mirrorCard: {
-    borderRadius: 20,
-    padding: 20,
-    marginBottom: 24,
-    borderWidth: 1,
-  },
-  cardLight: {
-    backgroundColor: '#ffffff',
-    borderColor: '#f1f5f9',
-  },
-  cardDark: {
-    backgroundColor: '#1e293b',
-    borderColor: '#334155',
-  },
-  mirrorHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  mirrorIconContainer: {
-    width: 44,
-    height: 44,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 12,
-  },
-  mirrorSubtitle: {
-    fontSize: 10,
-    fontWeight: '600',
-    color: '#94a3b8',
-    letterSpacing: 1,
-  },
-  mirrorTitle: {
-    fontSize: 18,
-    fontWeight: '800',
-  },
-  mirrorDesc: {
-    fontSize: 13,
-    lineHeight: 18,
-    fontStyle: 'italic',
-  },
+
   summaryCard: {
     borderRadius: 20,
     padding: 20,

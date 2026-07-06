@@ -1,4 +1,4 @@
-export const APP_VERSION = '0.2.0';
+export const APP_VERSION = '0.2.1';
 
 export interface ChangelogEntry {
   version: string;
@@ -7,6 +7,14 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
+  {
+    version: '0.2.1',
+    date: '2026-07-06',
+    notes: [
+      'Removed Financial Identity Mirror Widget from Dashboard',
+      'Fixed NativeWind bundler dependency errors'
+    ]
+  },
   {
     version: '0.2.0',
     date: '2026-07-01',

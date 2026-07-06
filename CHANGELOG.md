@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.1] - 2026-07-06
+
+### Changed
+- Removed Financial Identity Mirror Widget from Dashboard as requested.
+- Fixed NativeWind v5 dependency resolution error on Metro bundler.
+- Added `dev` script to package.json.
+
 ## [0.2.0] - 2026-07-01
 
 ### Added

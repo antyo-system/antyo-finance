@@ -49,7 +49,7 @@ This stack is optimized for **AI tooling support**, **documentation quality**, a
 
 ### Styling & Visuals
 - `nativewind` & `tailwindcss`
-- `react-native-css-interop`
+- `react-native-css`
 - `react-native-svg` (for vector charts and visuals)
 - `@gorhom/bottom-sheet` & `react-native-gesture-handler`
 - `react-native-reanimated`
