@@ -53,7 +53,7 @@ export default function AssetsView() {
   };
 
   const formatCompact = (val: number) => {
-    return formatCompactCurrency(val, settings.currency);
+    return formatCompactCurrency(val, settings.currency, settings.language || 'id');
   };
 
   const getAssetCategoryIcon = (cat: AssetCategory) => {
@@ -75,7 +75,7 @@ export default function AssetsView() {
 
   return (
     <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-x-hidden">
-      {/* Clean Minimalist Title Header (No duplicate + button) */}
+      {/* Clean Minimalist Title Header */}
       <div className="flex items-center justify-between gap-3">
         <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight truncate">
           Assets & Net Worth
@@ -85,7 +85,7 @@ export default function AssetsView() {
         </span>
       </div>
 
-      {/* DISTINCT PORTFOLIO ALLOCATION BREAKDOWN CARD (With Compact Currency Header Badges) */}
+      {/* DISTINCT PORTFOLIO ALLOCATION BREAKDOWN CARD (With Localized Compact Badges) */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xs w-full min-w-0 space-y-4">
         <div className="flex items-center justify-between gap-2 min-w-0">
           <div className="min-w-0">
@@ -98,7 +98,7 @@ export default function AssetsView() {
             </div>
           </div>
 
-          {/* Compact Currency Badges preventing text truncation */}
+          {/* Localized Compact Currency Badges (e.g. +Rp 25jt / +Rp 25M) */}
           <div className="text-right shrink-0">
             <span className="text-xs sm:text-sm font-black text-emerald-600 dark:text-emerald-400 block bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-200/60 dark:border-emerald-500/20">
               Assets: +{formatCompact(totalAssets)}

@@ -5,9 +5,19 @@ export interface ChangelogItem {
   notes: string[];
 }
 
-export const APP_VERSION = '0.5.0';
+export const APP_VERSION = '0.5.1';
 
 export const CHANGELOG: ChangelogItem[] = [
+  {
+    version: '0.5.1',
+    date: '2026-07-31',
+    title: 'Language Selector & Localized Compact Currency (jt/rb vs M/k)',
+    notes: [
+      'Language Selection setting in Settings (Bahasa Indonesia vs English).',
+      'Indonesian compact currency suffixes: Ribuan -> rb (500rb), Jutaan -> jt (25jt), Miliaran -> M (1,2M).',
+      'English compact currency suffixes: Thousands -> k (500k), Millions -> M (25M), Billions -> B (1.2B).',
+    ],
+  },
   {
     version: '0.5.0',
     date: '2026-07-31',

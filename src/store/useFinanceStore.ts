@@ -40,6 +40,7 @@ export interface Asset {
 export interface AppSettings {
   currency: string;
   theme: 'system' | 'light' | 'dark';
+  language: 'id' | 'en';
   needsTarget: number;
   wantsTarget: number;
   savingsTarget: number;
@@ -156,6 +157,7 @@ export const useFinanceStore = create<FinanceStore>()(
       settings: {
         currency: 'Rp',
         theme: 'system',
+        language: 'id',
         needsTarget: 50,
         wantsTarget: 30,
         savingsTarget: 20,
