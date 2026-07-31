@@ -1,75 +1,65 @@
 <div align="center">
-  <h1>💰 Antyo Finance <code>v0.1.0</code></h1>
-  <p><strong>An Identity Mirror and Decision System for Your Money</strong></p>
+  <h1>Antyo Finance <code>v0.4.0</code> (Web Edition)</h1>
+  <p><strong>A minimalist, local-first web application for personal budgeting and spending tracking.</strong></p>
 </div>
 
-Antyo Finance is a highly opinionated budgeting and personal finance application built around the philosophy that **where your money goes, your future grows**. It helps you see who you are becoming based on your daily financial decisions.
+Antyo Finance helps users quickly understand their monthly money position: how much came in, how much went out, and how much budget remains.
 
-Unlike standard expense trackers, Antyo Finance bridges the gap between **planned budgets and actual spending**, displaying them side-by-side in a clear, insightful interface. Every transaction is evidence of who you are becoming financially.
-
----
-
-## 🌟 The Core Innovations
-
-### 📊 1. Budget vs. Actual (The Financial Mirror)
-The heart of Antyo Finance is its **Plan vs Reality** view for money:
-* **Side-by-Side Comparison:** See what you *Budgeted* alongside what you *Actually Spent* — per category, per month.
-* **Visual Clarity:** Instantly identify overspending and underspending patterns with clear, color-coded indicators.
-* **No Guessing:** Data-driven financial awareness replaces gut feelings.
-
-### 💳 2. Smart Transaction Tracking
-Fast, frictionless logging of every financial decision:
-* **Quick Entry:** Add transactions in seconds with smart category suggestions.
-* **Recurring Transactions:** Set up bills, subscriptions, and salary auto-entries.
-* **Multi-Currency Support:** Track spending across different currencies with automatic conversion.
-
-### 📈 3. Financial Statistics & Insights
-Beautiful, actionable data to keep you accountable:
-* **Spending Heatmap:** A visual grid showing daily spending intensity.
-* **Category Breakdown:** Donut and bar charts revealing where your money actually goes.
-* **Budget Health Score:** A proprietary percentage comparing "Budgeted vs Spent" to measure financial discipline.
-* **Trend Analysis:** Week-by-week and month-by-month spending trends.
-
-### 🎯 4. Goal-Based Savings
-Every saved dollar feeds into your financial goals:
-* **Savings Goals:** Set targets (e.g., "Emergency Fund: Rp 50,000,000") and track progress visually.
-* **Milestone Celebrations:** Hit savings milestones with satisfying animations and shareable cards.
+The app stays intentionally simple, elegant, and fast. Built with **Vite + React 19 + Tailwind CSS v4**.
 
 ---
 
-## 💻 For Developers & Collaborators (DX)
+## Core Features
 
-Antyo Finance is built with an extreme emphasis on Developer Experience (DX), clean code, and blazing-fast performance.
+### 1. Personal Finance Dashboard
+- Current month Net Balance hero card.
+- Income vs Expense summary cards.
+- Monthly Budget Summary with total limit, remaining budget, and progress bars.
+- Recent Transactions list with quick action triggers.
 
-### 🏗️ Tech Stack
-- **Framework:** Expo (React Native) v56
-- **Routing:** Expo Router (File-based navigation)
-- **Language:** TypeScript (Strict Mode)
-- **State Management:** Zustand (with a custom 100% Local-First `expo-file-system` persistence adapter)
-- **Styling:** NativeWind (Tailwind CSS for React Native)
-- **Dates/Time:** `date-fns`
+### 2. Side-by-Side Category Budgets
+- Create, edit, and delete spending categories with custom colors.
+- Set monthly spending limits per category.
+- Visual budget health badges (`Under Budget`, `Approaching Limit`, `Over Budget`).
 
-### 🚀 Why This Stack?
-- **Local-First Architecture:** Ensures ultra-fast state updates and zero data loss, independent of network connectivity.
-- **Cross-Platform:** Designed for both Android and iOS from day one.
-- **Ecosystem Synergy:** Part of the ANTYO ecosystem (Focus, Finance, Health) — sharing core architecture patterns and future API integrations.
+### 3. Transaction Management
+- Add income and expense transactions with date, category, and notes.
+- Instant search and type filter (All, Expense, Income).
+- Delete transactions with automatic budget recalculation.
 
-### 🛠️ Getting Started
-1. Clone the repository.
-2. Install dependencies: `npm install`
-3. Start the development server: `npx expo start`
-4. Connect via Expo Go or build the native client.
-
-*(Note: Strict adherence to the `AGENTS.md` rules and the 5-Step Deletion Algorithm is mandatory for all contributions).*
+### 4. Application Settings
+- Currency symbol picker (Rp, $, €, £).
+- Theme mode selector (Dark, Light, System).
+- 100% local-first data privacy in browser `localStorage`.
+- Release Notes popup and Factory Data Reset capability.
 
 ---
 
-## 📈 For Investors: The Vision
+## Tech Stack
 
-Antyo Finance is currently in **Phase 1 (The Local-First Core)**. We are building a robust foundation that solves a real pain point: *The gap between financial planning and financial reality.*
+- **Framework:** Vite + React 19 + TypeScript
+- **Styling:** Tailwind CSS v4 + Lucide React Icons
+- **State Management:** Zustand + `localStorage` persistence
+- **Dates & Time:** `date-fns`
 
-Antyo Finance is part of the larger **ANTYO Ecosystem** — a suite of identity-driven apps (Focus, Finance, Health) that share a unified subscription model and cross-app data synergy.
+---
 
-To see our detailed path to 100M+ downloads, including our Freemium monetization model, future Cloud Sync features, and Go-To-Market growth loops, please review our overarching product strategy document:
+## Development Setup
 
-👉 **[Read the 100M Roadmap (ROADMAP_100M.md)](./docs/ROADMAP_100M.md)**
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run local development server:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:5173` in your browser.
+
+3. Build production bundle:
+   ```bash
+   npm run build
+   ```
+
+Refer to [AGENTS.md](./AGENTS.md) for project guidelines and standards.

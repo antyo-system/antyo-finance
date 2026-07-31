@@ -1,29 +1,39 @@
-import React, { useState } from 'react';
-import { X, PlusCircle, ArrowDownLeft, ArrowUpRight } from 'lucide-react';
-import { useFinanceStore } from '../store/useFinanceStore';
+import React, { useState, useEffect } from 'react';
+import { X, Edit3, Trash2, ArrowDownLeft, ArrowUpRight } from 'lucide-react';
+import { useFinanceStore, Transaction } from '../store/useFinanceStore';
 import { formatNumberInput, parseNumberInput } from '../utils/currency';
 
-interface AddTransactionModalProps {
+interface EditTransactionModalProps {
+  transaction: Transaction | null;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function AddTransactionModal({ isOpen, onClose }: AddTransactionModalProps) {
-  const { budgets, addTransaction, settings } = useFinanceStore();
+export default function EditTransactionModal({ transaction, isOpen, onClose }: EditTransactionModalProps) {
+  const { budgets, updateTransaction, deleteTransaction, settings } = useFinanceStore();
   const [type, setType] = useState<'expense' | 'income'>('expense');
   const [amountInput, setAmountInput] = useState('');
-  const [categoryId, setCategoryId] = useState(budgets[0]?.id || '');
+  const [categoryId, setCategoryId] = useState('');
   const [note, setNote] = useState('');
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [date, setDate] = useState('');
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (transaction) {
+      setType(transaction.type);
+      setAmountInput(formatNumberInput(transaction.amount));
+      setCategoryId(transaction.categoryId);
+      setNote(transaction.note || '');
+      setDate(transaction.date);
+    }
+  }, [transaction]);
+
+  if (!isOpen || !transaction) return null;
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatNumberInput(e.target.value);
-    setAmountInput(formatted);
+    setAmountInput(formatNumberInput(e.target.value));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     const numAmount = parseNumberInput(amountInput);
     if (!numAmount || numAmount <= 0) {
@@ -37,7 +47,7 @@ export default function AddTransactionModal({ isOpen, onClose }: AddTransactionM
       if (found) categoryName = found.name;
     }
 
-    addTransaction({
+    updateTransaction(transaction.id, {
       amount: numAmount,
       type,
       categoryId: type === 'expense' ? categoryId : 'income',
@@ -46,9 +56,14 @@ export default function AddTransactionModal({ isOpen, onClose }: AddTransactionM
       note: note.trim() || undefined,
     });
 
-    setAmountInput('');
-    setNote('');
     onClose();
+  };
+
+  const handleDelete = () => {
+    if (confirm('Are you sure you want to delete this transaction?')) {
+      deleteTransaction(transaction.id);
+      onClose();
+    }
   };
 
   return (
@@ -61,9 +76,9 @@ export default function AddTransactionModal({ isOpen, onClose }: AddTransactionM
         <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 dark:border-slate-800 mb-4">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-2xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200/60 dark:border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
-              <PlusCircle className="w-5 h-5 stroke-[2.5]" />
+              <Edit3 className="w-5 h-5 stroke-[2.5]" />
             </div>
-            <h2 className="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100">Add Transaction</h2>
+            <h2 className="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100">Edit Transaction</h2>
           </div>
           <button
             onClick={onClose}
@@ -73,7 +88,7 @@ export default function AddTransactionModal({ isOpen, onClose }: AddTransactionM
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSave} className="space-y-4">
           {/* Segmented Expense vs Income Toggle */}
           <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 dark:bg-slate-950 rounded-full border border-slate-200/60 dark:border-slate-800">
             <button
@@ -102,7 +117,7 @@ export default function AddTransactionModal({ isOpen, onClose }: AddTransactionM
             </button>
           </div>
 
-          {/* Read-Friendly Amount Input with Real-time Dots */}
+          {/* Read-Friendly Amount Input */}
           <div>
             <label className="block text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1">
               Amount ({settings.currency})
@@ -114,7 +129,6 @@ export default function AddTransactionModal({ isOpen, onClose }: AddTransactionM
               <input
                 type="text"
                 required
-                placeholder="0"
                 value={amountInput}
                 onChange={handleAmountChange}
                 className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800 rounded-2xl pl-12 pr-4 py-3 text-slate-900 dark:text-slate-100 font-black text-2xl focus:outline-none focus:border-blue-600 transition"
@@ -163,27 +177,37 @@ export default function AddTransactionModal({ isOpen, onClose }: AddTransactionM
             </label>
             <input
               type="text"
-              placeholder="e.g. Lunch with team"
               value={note}
               onChange={(e) => setNote(e.target.value)}
               className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800 rounded-2xl px-4 py-3 text-slate-900 dark:text-slate-100 font-bold text-sm focus:outline-none focus:border-blue-600 transition"
             />
           </div>
 
-          <div className="flex gap-3 pt-2">
+          <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800 gap-2">
             <button
               type="button"
-              onClick={onClose}
-              className="flex-1 py-3 rounded-full border border-slate-200 dark:border-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs transition"
+              onClick={handleDelete}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-full bg-rose-50 dark:bg-rose-500/10 hover:bg-rose-100 dark:hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 font-bold text-xs transition shrink-0"
             >
-              Cancel
+              <Trash2 className="w-4 h-4" />
+              <span className="hidden sm:inline">Delete</span>
             </button>
-            <button
-              type="submit"
-              className="flex-1 py-3 rounded-full bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-extrabold text-xs transition shadow-lg shadow-blue-600/30"
-            >
-              Save Transaction
-            </button>
+
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2.5 rounded-full border border-slate-200 dark:border-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs transition"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-extrabold text-xs transition shadow-lg shadow-blue-600/30"
+              >
+                Save
+              </button>
+            </div>
           </div>
         </form>
       </div>

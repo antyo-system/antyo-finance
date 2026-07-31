@@ -35,12 +35,13 @@ This checklist tracks the progress of **Antyo Finance** from its MVP state all t
 
 **Core Features — Dashboard**
 - [x] Financial Dashboard (balance, income, expenses, budget remaining)
+- [x] Money-first dashboard cleanup (remove brand block, mirror copy, savings-goal card, and dashboard Budget vs Actual card)
 - [ ] Category Breakdown Chart (donut/pie)
 - [x] Income vs Expense Overview
 
 **Statistics & Insights**
 - [ ] Weekly & Monthly Spending Trend Charts
-- [x] Budget Health Score (0-100 / Identity Mirror Widget)
+- [ ] Budget Health Score (0-100 / Identity Mirror Widget) - deferred, not shown on current dashboard
 - [ ] Spending Heatmap (calendar-style daily grid)
 
 **Polish & UX**
@@ -86,54 +87,60 @@ This checklist tracks the progress of **Antyo Finance** from its MVP state all t
 
 ---
 
-## Phase 2: Gamification & Financial Identity
-**Status: ⏳ Pending**
-*Fokus: Psikologi Identitas Finansial & Viralitas Organik.*
+## Phase 2: Antyo Spaces (REMOVED in v0.4.0)
+**Status: 🚫 Removed / Reverted**
+*Fokus: Reverted to 100% Personal Finance core in v0.4.0 to eliminate overengineering and maintain a laser-focused MVP experience.*
 
-- [ ] **Task 2.1: Financial Health Score**
-  - **Goal:** Build a 0-100 score system measuring budgeting discipline, saving ratio, and tracking consistency.
-- [ ] **Task 2.2: Savings Goal Engine**
-  - **Goal:** Visual savings targets with progress bars, milestone celebrations, and social sharing.
-- [ ] **Task 2.3: Milestone Sharing (Viral Loop)**
-  - **Goal:** Build aesthetic "Share to IG Story / TikTok" image generator when users hit savings milestones.
-- [ ] **Task 2.4: Spending Streaks & Heatmap**
-  - **Goal:** Add a streak system for consecutive days of staying under budget.
-
----
-
-## Phase 3: Cloud, Sync & Premium (Monetization)
-**Status: ⏳ Pending**
-*Fokus: Infrastruktur Skala Besar & Monetisasi Awal (Freemium).*
-
-- [ ] **Task 3.1: Backend Integration (Clerk + Supabase)**
-  - **Goal:** Seamlessly sync local data to the cloud for multi-device access.
-  - [ ] Authentication (Clerk)
-  - [ ] Database Foundation (Supabase)
-  - [ ] Local-First Synchronization Engine
-- [ ] **Task 3.2: Paywall Integration (Antyo Pro)**
-  - **Goal:** Implement Freemium model (Free, Plus, Pro tiers).
-  - [ ] Finalize 3-tier pricing strategy
-  - [ ] Build Paywall UI
-  - [ ] RevenueCat SDK Integration
-- [ ] **Task 3.3: Advanced Analytics (Pro)**
-  - **Goal:** AI spending insights, smart categorization, Weekly Financial Identity Report.
-- [ ] **Task 3.4: Multi-Currency & Exchange Rates**
-  - **Goal:** Real-time currency conversion for international users.
+- [x] **Task 2.0: Chunk Antyo Spaces Idea Into Buildable Roadmap**
+  - **Goal:** Break the Personal, Business, and Accountant modes into MVP-safe phases and document the future scope in the idea bank.
+- [x] **Task 2.1: Scope & Identity Gate**
+  - **Goal:** Define the smallest Spaces version that helps users make better identity-aligned financial decisions while keeping Personal Space as the default MVP experience.
+- [x] **Task 2.2: Personal Navigation Alignment**
+  - **Goal:** Align Personal Space navigation to `Dashboard`, `Budgets`, `History`, and `Settings` before adding new modes.
+- [x] **Task 2.3: Space Switcher UI Shell**
+  - **Goal:** Add a top-left Space Switcher with a simple premium menu or bottom sheet using existing Expo/React Native tools; do not add a new animation library without approval.
+- [x] **Task 2.4: Space Theme Tokens**
+  - **Goal:** Define Personal green and Business violet/indigo accent tokens with strong contrast, avoiding decorative glass effects that reduce financial readability.
+- [x] **Task 2.5: Business Space Preview State**
+  - **Goal:** Add a lightweight Business Space preview/empty state for cash flow and reports, with no ledger schema, roles, invites, or formal accounting screens yet.
+- [x] **Task 2.6: Minimalist Spaces Dashboard Correction**
+  - **Goal:** Keep Spaces visually lightweight by removing dashboard brand/mirror/professional copy and keeping Personal Space focused on net balance, income, expenses, budget remaining, and recent transactions.
+- [ ] **Task 2.7: Progressive Disclosure Deep Layers**
+  - **Goal:** Add `Detail Screen -> Source Drawer` only after the business ledger model is designed and tested.
 
 ---
 
-## Phase 4: Social Proof & Ecosystem
+## Phase 3: Business Owner Accounting Layer
 **Status: ⏳ Pending**
-*Fokus: Efek Jaringan & Pertumbuhan Eksponensial (10M+)*
+*Fokus: Build business cash clarity only after the Spaces MVP proves useful.*
 
-- [ ] **Task 4.1: ANTYO Ecosystem API Synergy**
-  - **Goal:** Connect to ANTYO Focus (time-correlated spending) and ANTYO Health (health investment tracking).
-- [ ] **Task 4.2: Shared Budgets (Couples/Families)**
-  - **Goal:** Allow multiple users to share budget categories and track together.
-- [ ] **Task 4.3: Financial Challenges**
-  - **Goal:** Monthly saving challenges with leaderboards and community engagement.
-- [ ] **Task 4.4: B2B / Team Expense Dashboard**
-  - **Goal:** Enterprise portal for startups to track team expenses.
+- [ ] **Task 3.1: Business Domain Model RFC**
+  - **Goal:** Document the minimum local-first data model for Business Space without disrupting existing Personal budgets and transactions.
+- [ ] **Task 3.2: Double-Entry Ledger Architecture Spike**
+  - **Goal:** Design Chart of Accounts, Journal Entries, and Journal Lines behind the scenes, including migration strategy and required `/src/utils` tests.
+- [ ] **Task 3.3: Silent Ledger Entry Engine**
+  - **Goal:** Auto-generate balanced debit/credit journal lines when Business transactions are saved, while keeping accounting jargon hidden from owner-facing screens.
+- [ ] **Task 3.4: Business Dashboard Signal Widgets**
+  - **Goal:** Add simple owner-facing cash flow, revenue, expense, and net profit cards before building formal reports.
+- [ ] **Task 3.5: Accountant Mode Deferral Gate**
+  - **Goal:** Keep Accountant View, PSAK tables, journals, invites, and formal reports parked until Business Space, sync, and paywall strategy are validated.
+- [ ] **Task 3.6: Formal Reports Readiness Gate**
+  - **Goal:** Only start P&L, balance sheet, cash flow, equity, and CaLK screens after ledger correctness is proven with unit tests and sample data.
+
+---
+
+## Phase 4: Gamification, Streaks & Ecosystem
+**Status: ⏳ Pending**
+*Fokus: Retention Loop, Gamifikasi Finansial Pribadi, & Sinergi Ekosistem Antyo.*
+
+- [ ] **Task 4.1: Financial Health Score & Gamification**
+  - **Goal:** Build a 0-100 score system based on budgeting discipline, savings ratio, and tracking consistency.
+- [ ] **Task 4.2: Savings Goal Engine & Milestone Sharing**
+  - **Goal:** Visual savings targets with celebrations and aesthetic shareable cards for IG/TikTok.
+- [ ] **Task 4.3: ANTYO Ecosystem API Synergy**
+  - **Goal:** Connect transactions/expenses to ANTYO Focus (time-based spending blocks) and ANTYO Health.
+- [ ] **Task 4.4: Shared Budgets (Couples/Families)**
+  - **Goal:** Allow couples/families to share specific budget categories in the Personal Space.
 
 ---
 

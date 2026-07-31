@@ -20,6 +20,7 @@ Berikut adalah *Master Blueprint* dari MVP hingga menghasilkan ratusan juta per 
 
 *   **Fitur Produk (Target MVP):**
     *   Dashboard utama dengan ringkasan keuangan (saldo, pengeluaran bulan ini, budget tersisa) dan cermin identitas finansial.
+    *   Antyo Spaces mockup untuk memvalidasi pemisahan Personal vs Business tanpa membangun ledger bisnis penuh terlalu awal.
     *   Sistem Budget (buat kategori, set limit bulanan, pantau progress secara langsung).
     *   Transaction Tracking (input transaksi pengeluaran dan pemasukan cepat).
     *   Budget vs Actual comparison view (side-by-side per kategori).

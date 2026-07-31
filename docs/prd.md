@@ -2,120 +2,92 @@
 
 **Project Name:** Antyo Finance  
 **Document Status:** Draft  
-**Target Platform:** Android & iOS (Google Play Store & Apple App Store)  
-**Tech Stack:** Expo (React Native)  
+**Target Platform:** Android & iOS
+**Tech Stack:** Expo, React Native, TypeScript, Zustand
 
 ---
 
 ## 1. Executive Summary
-Antyo Finance is a minimalist, local-first budgeting and personal finance application designed to bridge the gap between financial planning and financial reality. By capturing actual spending data and overlaying it on planned budgets, users gain unprecedented visibility into how they actually spend their money compared to how they planned it.
+Antyo Finance is a minimalist, local-first budgeting and personal finance app. The product helps users answer one simple daily question: **How much money do I have this month after income, expenses, and planned budgets?**
 
-## 2. Problem Statement
-Current budgeting tools are fragmented. Spreadsheet-based budgets excel at planning but fail to track day-to-day execution. Expense tracker apps capture transactions but lack the context of a planned budget. As a result, users suffer from a "budgeting fallacy," unable to visualize the discrepancy between their intended spending and real-world financial behavior.
+The dashboard must stay calm and direct. It highlights net balance, income, expenses, remaining budget, and recent transactions. It does not use motivational mirror copy, savings-goal widgets, or professional accounting language on the main dashboard.
 
-## 3. Product Vision & Value Proposition
-**Vision:** To provide users with a transparent, unified view of their finances, automatically transforming raw transactions into a clear picture of their financial identity.
+## 2. Product Direction
+**Primary Value:** Give users a clean monthly money snapshot without making them feel like they are using accounting software.
 
-**Value Proposition:** Stop guessing where your money went. Antyo Finance lets you see your budgets side-by-side with your reality, enabling data-driven adjustments to your spending habits without complex manual reconciliation.
+**Design Principle:** Money first, explanation second. The first screen should immediately show:
+- Net balance this month
+- Monthly income
+- Monthly expenses
+- Total planned budget
+- Remaining budget
+- Recent transactions
 
-## 4. Market Strategy & Personas
+## 3. Core Personas
+- **Young Professional:** Wants to know where salary went this month without opening a spreadsheet.
+- **Freelancer / Gig Worker:** Needs a simple view of variable income, expenses, and remaining budget.
+- **Conscious Spender:** Wants quick feedback on whether current spending still fits the monthly plan.
 
-### 4.1 STP (Segmentation, Targeting, Positioning)
+## 4. MVP Scope
 
-**1. Segmentation:**
-- **Demographic:** Young Adults (18-30), Working Professionals (25-40), Freelancers & Gig Workers (20-35).
-- **Psychographic:** Financially aware but inconsistent, frustrated by overspending, appreciates minimalist and premium design, values privacy (local-first).
-- **Behavioral:** Budget app switchers, spreadsheet abandoners, visual learners who respond to charts and progress bars.
+### In Scope
+- **Money-First Dashboard:** Net balance, income, expenses, monthly budget summary, and recent transactions.
+- **Budget Management:** Create, edit, delete, and track category budgets.
+- **Budget Tab Comparison:** Budget vs actual category progress can live in the Budget tab, not as a main dashboard card.
+- **Transaction Tracking:** Add, view, search, filter, and delete income/expense transactions.
+- **Settings:** Currency, theme, changelog, and data reset.
+- **Antyo Spaces Shell:** Lightweight Personal/Business context switcher with no ledger, accountant role, or formal report engine.
 
-**2. Targeting:**
-- **Primary Target:** Young adults and early-career professionals aged **18-35** in emerging markets (Indonesia, SEA). These users have growing incomes but lack disciplined spending habits and are underserved by complex Western finance apps.
+### Out of Scope for Current MVP
+- Savings goal dashboard widgets.
+- Personal Mirror headline or identity slogan on the main dashboard.
+- Business owner overview copy.
+- Accountant view, journals, CoA, PSAK reports, CaLK, and formal export.
+- Bank integration, AI analysis, cloud sync, and social sharing.
 
-**3. Positioning:**
-- **Tagline:** "A Financial Identity System, Not Just a Budget Tracker."
-- **Differentiation:** Unlike basic expense trackers or complex finance suites, Antyo Finance is positioned as a **Financial Reality Check tool**. It visually juxtaposes BUDGET vs ACTUAL spending, giving users an immediate, data-driven reality check on their finances without complex setups.
+## 5. Feature Requirements
 
-### 4.2 User Personas
-### Primary Personas
-- **The Young Professional:** Has a stable income but struggles to track where the money goes each month. Wants simple visual feedback, not accounting software.
-- **The Freelancer / Gig Worker:** Has irregular income and needs to budget carefully across variable months. Needs flexible budgeting that adapts.
-- **The Conscious Spender:** Knows they overspend in certain categories (food delivery, entertainment) and wants accountability through data.
+### 5.1 Dashboard
+- Show **Net Balance (This Month)** as the primary visual element.
+- Show income and expenses directly under the net balance.
+- Show **Monthly Budget Summary** with total limit, remaining budget, percent spent, and total spent.
+- Show recent transactions below the summary.
+- Avoid dashboard cards for savings goals or budget-vs-actual detail.
+- Avoid brand/title blocks such as "Antyo", "Personal Mirror", or "Business Owner Overview".
 
-### Secondary Personas
-- **The Savings Goal Setter:** Has specific financial targets (emergency fund, vacation, gadget) and wants progress visualization.
-- **The Couple / Shared Finance User:** Wants to track household spending across shared categories (future feature).
+### 5.2 Budget
+- Users can create categories with name, icon, color, and monthly limit.
+- Users can edit limits and delete categories.
+- Each category shows actual spending against the planned limit.
+- Color feedback should remain simple: under budget, approaching limit, over budget.
 
-## 5. Scope Definition
+### 5.3 Transactions
+- Users can add income and expense transactions.
+- Required fields: amount, type, category for expenses, date, optional note.
+- Transactions must use UUIDs.
+- Users can search/filter history and delete transactions.
 
-### In-Scope for MVP (V1)
-The MVP prioritizes core loop functionality: Budget → Track → Compare → Reflect.
-- **Onboarding:** A brief, frictionless introduction to the "Budget vs Reality" concept.
-- **Budget Setup:** Create monthly budgets with custom categories and spending limits.
-- **Transaction Entry:** Quick add income and expense transactions with category, amount, date, and notes.
-- **Budget vs Actual View:** A comparison view showing planned budget alongside actual spending per category.
-- **Dashboard:** At-a-glance financial summary (total balance, monthly income, monthly expenses, budget remaining).
-- **Basic Statistics:** Category breakdown charts, weekly/monthly spending trends.
-- **Settings:** Basic app configuration (currency, theme, data export).
+### 5.4 Antyo Spaces
+- Personal Space is the default.
+- Business Space is a lightweight money-summary preview only.
+- Business Space may show revenue, expenses, profit, and margin using existing local transaction data.
+- Accountant/professional layers remain deferred until the business data model is designed and tested.
 
-### Out of Scope (MVP Boundaries)
-- **AI Features:** Smart categorization, spending pattern analysis, and predictive insights are strictly deferred.
-- **Social & Community:** No shared budgets, friend lists, or community features.
-- **Gamification:** No scoring systems, achievements, or badges.
-- **Cloud Sync & Backend:** App must remain entirely local-first for MVP. No complex syncing, account creation, or backend architecture.
-- **Investment Tracking:** No stock/crypto portfolio management.
-- **Bank Integration:** No automatic bank feed imports (Open Banking API deferred).
+## 6. Non-Functional Requirements
+- **Local-first:** Core data must work offline.
+- **Fast:** Dashboard should feel instant.
+- **Private:** No financial data leaves the device during MVP.
+- **Readable:** Financial numbers must be more prominent than decorative UI.
+- **Simple:** Do not add new major dependencies without approval.
 
-## 6. Detailed Feature Requirements
+## 7. Success Metrics
+- User can understand monthly money position within 5 seconds of opening the dashboard.
+- User can add a transaction in under 10 seconds.
+- User can identify remaining monthly budget without navigating away from the dashboard.
+- Day 1 and Day 7 retention improve after simplifying the dashboard.
 
-### 6.1 Onboarding
-- **Requirement:** Display 3-4 swipeable screens explaining the core value loop (Budget → Track → See Reality).
-- **Requirement:** No mandatory login or account creation required to start using the app.
-- **Requirement:** Allow users to set their primary currency during onboarding.
-
-### 6.2 Budget Management
-- **Requirement:** Allow users to create monthly budget categories with a name, icon, color, and spending limit.
-- **Requirement:** Provide a set of default category templates (Food, Transport, Entertainment, Bills, Shopping, Health).
-- **Requirement:** Display budget progress as visual progress bars per category.
-- **Requirement:** Show total budget vs total spent at the top of the budget screen.
-
-### 6.3 Transaction Tracking
-- **Requirement:** Allow users to add income and expense transactions with: amount, category, date, and optional notes.
-- **Requirement:** Provide a transaction history list with search and filter (by category, date range).
-- **Requirement:** On save, a `Transaction` object is generated and saved to local storage with a UUID.
-
-### 6.4 Budget vs Actual View
-- **Requirement:** Display a per-category comparison view showing budgeted amount vs actual spent.
-- **Requirement:** Use color-coded indicators: green (under budget), yellow (approaching limit), red (over budget).
-- **Requirement:** Show percentage consumed per category.
-
-### 6.5 Statistics & Insights
-- **Requirement:** Display total income and expenses for the current month.
-- **Requirement:** Show category breakdown as a donut/pie chart.
-- **Requirement:** Calculate and display a "Budget Health Score" (Actual Spent / Budgeted × 100).
-- **Requirement:** Show weekly and monthly spending trend bar charts.
-
-## 7. Non-Functional Requirements
-- **Performance:** App must load instantly. State read/writes must be synchronous and fast.
-- **Platform:** Cross-platform (Android & iOS) optimized experience.
-- **Offline Capability:** 100% functionality without an active internet connection.
-- **Design & UI:** Must feel premium, modern, and distinct. It should prioritize clarity and simplicity, avoiding cluttered interfaces. Budget vs Actual must be visually unmistakable.
-- **Data Privacy:** All financial data stored locally on-device. No telemetry of financial data.
-
-## 8. Technical Architecture & Stack
-- **Framework:** Expo (React Native)
-- **Routing:** Expo Router (File-based navigation)
-- **State Management:** Zustand (Lightweight global state)
-- **Persistence:** Custom JSON storage adapter built on `expo-file-system` (to ensure 100% data safety and compatibility across Expo Go and bare native workflows)
-- **Date Handling:** `date-fns` (modular utility library)
-- **Styling:** NativeWind (Tailwind CSS for React Native)
-
-## 9. Success Metrics (KPIs for MVP)
-- **Retention:** Day 1 and Day 7 retention rates.
-- **Core Loop Completion:** Percentage of users who create at least one budget category and log at least one transaction.
-- **Time to Value:** Time taken from app install to the first budget vs actual comparison viewed.
-- **Budget Accuracy:** Average deviation between planned budget and actual spending (lower is better).
-
-## 10. Future Roadmap (Post-MVP)
-- **Phase 2:** Financial Health Score, Savings Goals with visual progress and milestone celebrations.
-- **Phase 3:** Cloud sync and multi-device support via Clerk + Supabase.
-- **Phase 4:** AI-powered spending insights, smart categorization, and predictive budgeting (Pro tier).
-- **Phase 5:** ANTYO Ecosystem integration (API synergy with ANTYO Focus for time-correlated spending analysis).
+## 8. Roadmap
+- **Phase 1:** Stabilize the money-first local dashboard, budgets, transactions, and settings.
+- **Phase 2:** Add recurring transactions, export/restore, onboarding, and improved charts.
+- **Phase 3:** Validate Business Space with simple owner-facing summaries.
+- **Phase 4:** Only after validation, design professional accounting, reports, roles, and sync.

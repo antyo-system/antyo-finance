@@ -1,37 +1,49 @@
-# Changelog
+# Antyo Finance Changelog
 
-All notable changes to Antyo Finance will be documented in this file.
+All notable changes to the Antyo Finance project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.5.0] - 2026-07-31
+
+### Added
+- **Compact Currency Abbreviation:** Smart formatting for small screens (`+Rp 25M`, `-Rp 40M`, `Rp 500k`) preventing text truncation.
+- **Assets & Net Worth View (`AssetsView.tsx`):** Dedicated net worth manager with portfolio allocation breakdown bar (`Stocks 40% | Gold 40% | Savings 20%`).
+- **PWA (Progressive Web App):** Added `manifest.json` and service worker (`sw.js`) for offline caching and home screen installation.
+- **Supabase Integration:** Client helper in `src/lib/supabase.ts` supporting cloud sync with local-first `localStorage` fallback.
+- **Standalone FAB & 4-Tab Capsule Bar:** Standalone floating action button (`+`) and 4 symmetrical navigation tabs.
+- **Real-Time Thousand Dots:** Auto-formatting dot thousand separators (`12.000.000`) in amount inputs.
 
 ---
 
-## [0.2.1] - 2026-07-06
-
-### Changed
-- Removed Financial Identity Mirror Widget from Dashboard as requested.
-- Fixed NativeWind v5 dependency resolution error on Metro bundler.
-- Added `dev` script to package.json.
-
-## [0.2.0] - 2026-07-01
+## [0.4.0] - 2026-07-31
 
 ### Added
-- Developed minimalist, simple local-first budgeting core.
-- Created Side-by-Side "Plan vs Reality" comparison view in Budget tab.
-- Integrated **Financial Identity Mirror Widget** on Dashboard to reflect user spending profile based on budget limit ratio.
-- Configured 100% data-safe local file storage adapter using `expo-file-system` for Zustand persistence.
-- Configured Tailwind CSS / NativeWind v5 support and Babel/PostCSS plugins.
-- Built responsive, clean and premium UI/UX theme with system-aware dark mode support.
-- Configured settings page with currency formatting, factory reset capability, and release notes popups.
+- **Interactive Edit Transaction Modal:** Edit amount, category, date, or note with 1-tap delete.
+- **Debt Payoff Engine:** Debt categories with due date badges (`Due Day 5`) and freedom progress bars (`33% Paid Off`).
+- **Smart Due Date Alerts:** Banner on Dashboard warning when debt payments are due within 7 days.
 
-## [0.1.0] - 2026-06-28
+---
+
+## [0.3.0] - 2026-07-31
 
 ### Added
-- Initial project setup with documentation framework.
-- Created AGENTS.md, GEMINI.md, README.md, and full docs folder.
-- Established project philosophy: "Where your money goes, your future grows."
-- Defined tech stack: Expo v56, TypeScript, Zustand, NativeWind, date-fns.
-- Created Product Requirements Document (PRD).
-- Created 100M Roadmap with Freemium monetization strategy.
-- Created Feature List, Project Checklist, SOP, and Idea Bank.
+- **Customizable 50/30/20 Budgeting:** Needs, Wants, and Savings target percentage configuration.
+- **1-Click CSV Export:** Transaction history CSV export.
+- **Smart Date Grouping:** Transactions grouped by `Today`, `Yesterday`, `Earlier this Week`, `MMMM yyyy`.
+
+---
+
+## [0.2.0] - 2026-07-31
+
+### Added
+- **Vite React Web Application:** Migrated from Expo to Vite + React Web Application.
+- **Antyo Focus Brand Alignment:** Electric Blue (`#2563EB`) design system.
+
+---
+
+## [0.1.0] - 2026-07-31
+
+### Added
+- Initial release of Antyo Finance core budgeting application.

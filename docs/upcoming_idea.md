@@ -51,4 +51,19 @@ This document is the central repository for all future ideas, brainstorms, and p
 - **Phase:** Phase 2.
 - **Identity Filter Score:** 10/10 — Directly intervenes in impulsive financial decisions and builds conscious spending habits.
 
----
+### Antyo Mobile Power Features (Evaluated v0.4.0)
+
+#### 1. Financial Discipline Score (0-100%) & Identity Pulse
+- **Concept:** Calculate a single dynamic score based on Budget Adherence + Savings Rate + Transaction Logging Consistency (matching Antyo Focus style).
+- **Identity Score:** 98/100 — Direct identity feedback loop ("Who you are becoming financially").
+- **Phase:** Recommended Next Step.
+
+#### 2. Quick-Add Smart Presets & Frequent Expense Chips
+- **Concept:** 1-Tap quick-add chips inside the transaction entry sheet (e.g. `☕ Coffee Rp 25k`, `🍱 Lunch Rp 50k`, `🚖 Transport Rp 30k`).
+- **Identity Score:** 95/100 — Reduces transaction logging time to 2 seconds on mobile.
+- **Phase:** Recommended Next Step.
+
+#### 3. Proactive Monthly Savings Projection
+- **Concept:** Smart pulse banner on Dashboard predicting end-of-month savings based on daily spending velocity.
+- **Identity Score:** 92/100 — Enables proactive financial decisions before budget is exceeded.
+- **Phase:** Recommended Next Step.
